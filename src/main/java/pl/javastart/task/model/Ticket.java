@@ -1,25 +1,22 @@
 package pl.javastart.task.model;
 
-import pl.javastart.task.model.Address;
-
 public class Ticket {
-    public static int nextTicketNo = 1;
-    public static final double SHIPPING_COST = 5;
+    public static int nextNumber = 1;
 
     private String event;
     private Address eventAddress;
-    private String ticketType;
+    private String type;
     private double price;
     private double discount;
-    private final int ticketNo;
+    private final int number;
 
-    public Ticket(String event, Address eventAddress, String ticketType, double price, double discount) {
+    public Ticket(String event, Address eventAddress, String type, double price, double discount) {
         this.event = event;
         this.eventAddress = eventAddress;
-        this.ticketType = ticketType;
+        this.type = type;
         this.price = price;
         this.discount = discount;
-        ticketNo = nextTicketNo++;
+        this.number = nextNumber++;
     }
 
     public String getEvent() {
@@ -38,12 +35,12 @@ public class Ticket {
         this.eventAddress = eventAddress;
     }
 
-    public String getTicketType() {
-        return ticketType;
+    public String getType() {
+        return type;
     }
 
-    public void setTicketType(String ticketType) {
-        this.ticketType = ticketType;
+    public void setType(String type) {
+        this.type = type;
     }
 
     public double getPrice() {
@@ -62,21 +59,17 @@ public class Ticket {
         this.discount = discount;
     }
 
-    public int getTicketNo() {
-        return ticketNo;
+    public int getNumber() {
+        return number;
     }
 
     public String ticketInfo() {
         return event + ", miejsce imprezy:  " + eventAddress.info() + ", cena podstawowa: " + price + "zł, zniżka: "
-                + discount + "%, cena finalna wyniesie " +  getTotalPrice() + "zł";
+                + (discount * 100) + "%";
     }
 
-    public double countDiscount() {
-        return discount / 100;
-    }
-
-    public double getDiscountPrice() {
-        return countDiscount() * price;
+    private double getDiscountPrice() {
+        return discount * price;
     }
 
     public double getTotalPrice() {

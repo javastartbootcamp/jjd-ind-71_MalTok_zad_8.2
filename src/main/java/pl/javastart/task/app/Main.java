@@ -20,12 +20,10 @@ public class Main {
 //        System.out.println(giftTicket.ticketInfo());
 
         Ticket ticket1 = TicketShop.createTicket(scanner);
-        System.out.println(ticket1.ticketInfo());
-//      TicketShop.showTicketFinalPrice(ticket1);
+        TicketShop.showTicketFullInfo(ticket1);
 
         Ticket ticket2 = TicketShop.createTicket(scanner);
-        System.out.println(ticket2.ticketInfo());
-//      TicketShop.showTicketFinalPrice(ticket2);
+        TicketShop.showTicketFullInfo(ticket2);
 
     }
 }
