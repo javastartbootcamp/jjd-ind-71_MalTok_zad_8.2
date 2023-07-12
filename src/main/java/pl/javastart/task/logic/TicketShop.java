@@ -6,6 +6,7 @@ import java.util.Scanner;
 
 public class TicketShop {
     private static final double SHIPPING_COST = 5;
+    private static final double GIFT_DISCOUNT = 5;
     private static final String ONLINE_TICKET = "online";
     private static final String STANDARD_TICKET = "standard";
     private static final String GIFT_TICKET = "gift";
@@ -15,7 +16,7 @@ public class TicketShop {
         return switch (ticketType) {
             case ONLINE_TICKET -> ticket.getTotalPrice();
             case STANDARD_TICKET -> ticket.getTotalPrice() + SHIPPING_COST;
-            case GIFT_TICKET -> ticket.getTotalPrice() + SHIPPING_COST + (ticket.getDiscount() * ticket.getTotalPrice());
+            case GIFT_TICKET -> ticket.getTotalPrice() + SHIPPING_COST + (ticket.getTotalPrice() * (GIFT_DISCOUNT / 100));
             default -> throw new IllegalStateException("Unexpected value: " + ticketType); //podpowiedź IntelliJ
         };
     }
